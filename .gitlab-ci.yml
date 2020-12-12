@@ -1,0 +1,31 @@
+stages:
+  - lint_prettier
+  - build
+  - deploy
+
+### TEST JOBS ###
+Prettier Check:
+  extends: .prettier
+
+Lint Check:
+  extends: .lint
+
+.prettier:
+  extends: .base_test
+  script:
+    - npm run prettier-check
+
+.lint:
+  extends: .base_test
+  script:
+    - npm run lint-check
+
+.base_test:
+  stage: lint_prettier
+  image: node:10.20.0
+  cache:
+    paths:
+      - node_modules
+  before_script:
+    - yarn
+
