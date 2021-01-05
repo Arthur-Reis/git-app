@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
-import { TESTE_KEY } from '@env'
+import { TESTE_KEY, API_URL } from '@env'
+import api_instance from './api/index'
 
 import {
   Header,
@@ -11,7 +12,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 
 const App = () => {
-  console.log('hue')
+  api_instance.get('repos/RocketSeat/unform').then(console.log)
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
