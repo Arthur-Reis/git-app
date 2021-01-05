@@ -1,5 +1,6 @@
 import React from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
+import { TESTE_KEY } from '@env'
 
 import {
   Header,
@@ -10,6 +11,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 
 const App = () => {
+  console.log('hue')
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -24,6 +26,7 @@ const App = () => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
+              <Text>{`variável ambiente: ${TESTE_KEY}`}</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
                 come back to see your edits.
