@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
 import { TESTE_KEY, API_URL } from '@env'
 import api_instance from './api/index'
-
+import call_user from './api/users'
 import {
   Header,
   LearnMoreLinks,
@@ -12,7 +12,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 
 const App = () => {
-  //api_instance.get('repos/RocketSeat/unform').then(console.log)
+  api_instance.get('repos/RocketSeat/unform').then(({ data: { id } }) => console.log(id))
 
   return (
     <>
