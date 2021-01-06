@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
+import { TESTE_KEY, API_URL } from '@env'
+import api_instance from './api/index'
 
 import {
   Header,
@@ -10,6 +12,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 
 const App = () => {
+  api_instance.get('repos/RocketSeat/unform').then(console.log)
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -24,6 +28,7 @@ const App = () => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
+              <Text>{`variável ambiente: ${TESTE_KEY}`}</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
                 come back to see your edits.
