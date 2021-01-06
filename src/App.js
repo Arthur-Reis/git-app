@@ -12,7 +12,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 
 const App = () => {
-  api_instance.get('repos/RocketSeat/unform').then(console.log)
+  //api_instance.get('repos/RocketSeat/unform').then(console.log)
 
   return (
     <>
