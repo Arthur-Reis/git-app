@@ -7,7 +7,7 @@ import api_instance from './index'
  * @returns ...
  */
 function call_repo(userName, repoName) {
-  api_instance.get('repos/' + `${nome}` + `${repoName}`).then(console.log)
+  api_instance.get('repos/' + `${nome}` + `${repoName}`).then( (r) => r)
 }
 
 export default call_repo

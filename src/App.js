@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
 import { TESTE_KEY, API_URL } from '@env'
-import api_instance from './api/index'
+import request from './api/interceptors'
 import call_user from './api/users'
 import {
   Header,
@@ -12,7 +12,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 
 const App = () => {
-  //api_instance.get('repos/RocketSeat/unform').then(({ data: { id } }) => console.log(id))
+ // request.get('users/RocketSeat').then(({ data: { login } }) => console.log(login))
+  request.get('users/RocketSeat').then( (r) => r)
 
   return (
     <>

@@ -6,7 +6,7 @@ import api_instance from './index'
  * @returns ...
  */
 function call_user(name) {
-  const a = api_instance.get('users/' + `${name}`).then(console.log)
+  const a = api_instance.get('users/' + `${name}`).then((r) => r)
   return a
 }
 

@@ -1,9 +1,13 @@
 import { decamelizeKeys, camelizeKeys } from 'humps'
-import { api_instance } from './index'
+import axios from 'axios'
+import { API_URL } from '@env'
 
-function request(instance) {
+function request() {
+  const api_instance = axios.create({
+    baseURL: API_URL
+  })
   //intercept requests before they are handled by (get)THEN or (try)CATCH --axios
-  instance.interceptors.request.use(
+  api_instance.interceptors.request.use(
     async function (config) {
       if (config.data) {
         const decamelizedData = decamelizeKeys(config.data, { separator: '_' }) || {} //humps
@@ -18,14 +22,14 @@ function request(instance) {
   )
 
   //intercept responses before they are handled by (get)THEN or (try)CATCH --axios
-  instance.interceptors.response.use(
+  api_instance.interceptors.response.use(
     (config) => camelizeKeys(config), //humps
     (error) => {
       return Promise.reject(error.response?.data || error)
     }
   )
 
-  return instance
+  return api_instance
 }
 
 export default request()
