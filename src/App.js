@@ -12,7 +12,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 
 const App = () => {
-  api_instance.get('repos/RocketSeat/unform').then(({ data: { id } }) => console.log(id))
+  //api_instance.get('repos/RocketSeat/unform').then(({ data: { id } }) => console.log(id))
 
   return (
     <>

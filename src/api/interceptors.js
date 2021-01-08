@@ -1,9 +1,9 @@
 import { decamelizeKeys, camelizeKeys } from 'humps'
 import { api_instance } from './index'
 
-function request() {
+function request(instance) {
   //intercept requests before they are handled by (get)THEN or (try)CATCH --axios
-  api_instance.interceptors.request.use(
+  instance.interceptors.request.use(
     async function (config) {
       if (config.data) {
         const decamelizedData = decamelizeKeys(config.data, { separator: '_' }) || {} //humps
@@ -18,14 +18,14 @@ function request() {
   )
 
   //intercept responses before they are handled by (get)THEN or (try)CATCH --axios
-  api_instance.interceptors.response.use(
+  instance.interceptors.response.use(
     (config) => camelizeKeys(config), //humps
     (error) => {
       return Promise.reject(error.response?.data || error)
     }
   )
 
-  return api_instance
+  return instance
 }
 
 export default request()
