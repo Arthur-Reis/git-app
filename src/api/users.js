@@ -1,4 +1,4 @@
-import api_instance from './index'
+import request from './interceptors'
 
 /**
  * Search and return an User Data
@@ -6,8 +6,10 @@ import api_instance from './index'
  * @returns ...
  */
 function call_user(name) {
-  const a = api_instance.get('users/' + `${name}`).then((r) => r)
-  return a
+  return request.get('search/users?q=' + 'rocket' + '+in:user').then(({ data }) => {
+    //console.log(data)
+    return data
+  })
 }
 
 export default call_user

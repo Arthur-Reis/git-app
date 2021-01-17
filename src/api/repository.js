@@ -1,4 +1,4 @@
-import api_instance from './index'
+import request from './interceptors'
 
 /**
  * Search and return a Repository Data
@@ -7,7 +7,8 @@ import api_instance from './index'
  * @returns ...
  */
 function call_repo(userName, repoName) {
-  api_instance.get('repos/' + `${nome}` + `${repoName}`).then( (r) => r)
+  request.get('repos/' + `${userName}` + `${repoName}`).then((r) => r)
+  console.log('repos/' + `${userName}` + '/' + `${repoName}`)
 }
 
 export default call_repo
