@@ -6,7 +6,7 @@ import request from './interceptors'
  * @returns ...
  */
 function call_user(name) {
-  return request.get('search/users?q=' + 'rocket' + '+in:user').then(({ data }) => {
+  return request.get('search/users?q=' + `${name}` + '+in:user').then(({ data }) => {
     //console.log(data)
     return data
   })

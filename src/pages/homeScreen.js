@@ -1,51 +1,48 @@
-import React from 'react'
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { SafeAreaView, FlatList, TextInput } from 'react-native'
+import Item from '../components/repoSearch'
 import call_user from '../api/users'
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item'
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item'
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item'
-  }
-]
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-)
+//componente de resultado
 
 const App = () => {
-  const renderItem = ({ item }) => <Item title={item.title} />
+  const [searchText, setSearchText] = useState('Arthur')
+  const [searchResult, setSearchResult] = useState([])
+
+  useEffect(() => {
+    namesReq().then(setSearchResult)
+    //console.log(searchResult)
+  }, [])
+
+  const renderItem = ({ item }) => <Item title={item.login} />
+
+  async function namesReq() {
+    const { items } = await call_user(`${searchText}`)
+    const login = items.map((item) => {
+      const info = { login: item.login, id: item.id }
+      return info
+    })
+    return login
+  }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList data={DATA} renderItem={renderItem} keyExtractor={(item) => item.id} />
+    <SafeAreaView>
+      <FlatList
+        data={searchResult}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        ListHeaderComponent={
+          <TextInput
+            onChangeText={setSearchText}
+            onSubmitEditing={() => {
+              namesReq().then(setSearchResult)
+            }}>
+            Arthur
+          </TextInput>
+        }
+      />
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0
-  },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16
-  },
-  title: {
-    fontSize: 32
-  }
-})
 
 export default App

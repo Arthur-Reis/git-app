@@ -1,28 +1,22 @@
-import { Button, View, Text, StyleSheet, TextInput } from 'react-native'
 import React from 'react'
+import { Button, View, Text, StyleSheet } from 'react-native'
 
-const viewStyle = StyleSheet.create({
-  repoContainer: {
-    flex: 1,
-    backgroundColor: 'gray'
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+)
+
+const styles = StyleSheet.create({
+  item: {
+    backgroundColor: 'gray',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16
+  },
+  title: {
+    fontSize: 32
   }
 })
 
-export function repoView({ navigation }) {
-  return (
-    <View style={viewStyle.repoContainer}>
-      <Text>Random Repo</Text>
-
-      <Button
-        title="Go to "
-        onPress={() => {
-          /* 1. Navigate to the Details route with params */
-          navigation.navigate('Details', {
-            itemId: 86,
-            otherParam: 'anything you want here'
-          })
-        }}
-      />
-    </View>
-  )
-}
+export default Item
