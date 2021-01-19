@@ -14,7 +14,7 @@ const App = () => {
     //console.log(searchResult)
   }, [])
 
-  const renderItem = ({ item }) => <Item title={item.login} />
+  const RenderItem = ({ item }) => <Item title={item.login} />
 
   async function namesReq() {
     const { items } = await call_user(`${searchText}`)
@@ -29,9 +29,9 @@ const App = () => {
     <SafeAreaView>
       <FlatList
         data={searchResult}
-        renderItem={renderItem}
-        keyExtractor= {useCallback((item) => item.id.toString(),[])}
-        ListHeaderComponent={ 
+        renderItem={RenderItem}
+        keyExtractor={useCallback((item) => item.id.toString(), [])}
+        ListHeaderComponent={
           <TextInput
             onChangeText={setSearchText}
             onSubmitEditing={() => {
