@@ -3,15 +3,12 @@ import { SafeAreaView, FlatList, TextInput } from 'react-native'
 import Item from '../components/repoSearch'
 import call_user from '../api/users'
 
-//componente de resultado
-
 const App = () => {
   const [searchText, setSearchText] = useState('Arthur')
   const [searchResult, setSearchResult] = useState([])
 
   useEffect(() => {
     namesReq().then(setSearchResult)
-    //console.log(searchResult)
   }, [])
 
   const RenderItem = ({ item }) => <Item title={item.login} />

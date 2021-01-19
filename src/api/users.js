@@ -7,7 +7,6 @@ import request from './interceptors'
  */
 function call_user(name) {
   return request.get('search/users?q=' + `${name}` + '+in:user').then(({ data }) => {
-    //console.log(data)
     return data
   })
 }
