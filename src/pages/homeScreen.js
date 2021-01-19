@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { SafeAreaView, FlatList, TextInput } from 'react-native'
 import Item from '../components/repoSearch'
 import call_user from '../api/users'
@@ -30,8 +30,8 @@ const App = () => {
       <FlatList
         data={searchResult}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        ListHeaderComponent={
+        keyExtractor= {useCallback((item) => item.id.toString(),[])}
+        ListHeaderComponent={ 
           <TextInput
             onChangeText={setSearchText}
             onSubmitEditing={() => {
