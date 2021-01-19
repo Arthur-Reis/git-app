@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 const Item = ({ title }) => (
   <View style={styles.item}>

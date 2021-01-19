@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { SafeAreaView, FlatList, TextInput } from 'react-native'
+import { SafeAreaView, FlatList } from 'react-native'
 import Item from '../components/repoSearch'
 import call_user from '../api/users'
+import SearchBar from '../components/searchBar'
 
 const App = () => {
-  const [searchText, setSearchText] = useState('Arthur')
+  const [searchText, setSearchText] = useState('')
   const [searchResult, setSearchResult] = useState([])
 
   useEffect(() => {
-    namesReq().then(setSearchResult)
+    // namesReq().then(setSearchResult)
   }, [])
 
   const RenderItem = ({ item }) => <Item title={item.login} />
@@ -29,13 +30,13 @@ const App = () => {
         renderItem={RenderItem}
         keyExtractor={useCallback((item) => item.id.toString(), [])}
         ListHeaderComponent={
-          <TextInput
+          <SearchBar
+            initialTextValue={''}
             onChangeText={setSearchText}
             onSubmitEditing={() => {
               namesReq().then(setSearchResult)
-            }}>
-            Arthur
-          </TextInput>
+            }}
+          />
         }
       />
     </SafeAreaView>
