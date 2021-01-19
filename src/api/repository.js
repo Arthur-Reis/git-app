@@ -8,7 +8,6 @@ import request from './interceptors'
  */
 function call_repo(userName, repoName) {
   request.get('repos/' + `${userName}` + `${repoName}`).then((r) => r)
-  console.log('repos/' + `${userName}` + '/' + `${repoName}`)
 }
 
 export default call_repo
