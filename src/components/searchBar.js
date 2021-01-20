@@ -10,7 +10,7 @@ function SearchBar({ initialTextValue, onChangeText, onSubmitEditing }) {
       <Button
         title="Search"
         color="#841584"
-        accessibilityLabel="Learn more about this purple button"
+        accessibilityLabel="Search button"
         onPress={onSubmitEditing}
       />
     </View>
@@ -20,8 +20,9 @@ function SearchBar({ initialTextValue, onChangeText, onSubmitEditing }) {
 const styles = StyleSheet.create({
   bar: {
     backgroundColor: '#bdbdbd',
-    marginHorizontal: 16,
-    marginTop: 2
+    marginTop: 2,
+    marginBottom: 10,
+    marginHorizontal: '2%'
   }
 })
 
