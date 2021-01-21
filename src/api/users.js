@@ -5,7 +5,7 @@ import request from './interceptors'
  * @param name the name of the user to be searched
  * @returns ...
  */
-function call_user(name, page) {
+function getUserData(name, page) {
   console.log('search/users?q=' + `${name}` + '+in:user&page=' + `${page}` + '&per_page=10')
   return request
     .get('search/users?q=' + `${name}` + '+in:user&page=' + `${page}` + '&per_page=10')
@@ -15,4 +15,4 @@ function call_user(name, page) {
 }
 //example URL
 //https://api.github.com/search/users?q=rocketSeat+in:user%27&page=1&per_page=10
-export default call_user
+export default getUserData

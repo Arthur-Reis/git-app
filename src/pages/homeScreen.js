@@ -1,23 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { SafeAreaView, FlatList } from 'react-native'
 import Item from '../components/repoSearch'
-import call_user from '../api/users'
+import getUserData from '../api/users'
 import SearchBar from '../components/searchBar'
 
-const App = () => {
+const HomeScreen = () => {
   const [searchText, setSearchText] = useState('')
   const [searchResult, setSearchResult] = useState([])
   const [page, setPage] = useState(1)
-  useEffect(() => {
-    // getUser().then(setSearchResult)
-  }, [])
 
   const RenderItem = ({ item }) => <Item title={item.login} avatar_url={item.avatar_url} />
 
-  async function getMoreUsers() {
+  async function getUser() {
     try {
-      setPage(page + 1)
-      const { items } = await call_user(`${searchText}`, page + 1)
+      setPage(1)
+      const { items } = await getUserData(`${searchText}`, 1)
       const login = items.map((item) => {
         const info = { login: item.login, id: item.id, avatar_url: item.avatarUrl }
         return info
@@ -28,10 +25,10 @@ const App = () => {
     }
   }
 
-  async function getUser() {
+  async function getMoreUsers() {
     try {
-      setPage(1)
-      const { items } = await call_user(`${searchText}`, 1)
+      setPage(page + 1)
+      const { items } = await getUserData(`${searchText}`, page + 1)
       const login = items.map((item) => {
         const info = { login: item.login, id: item.id, avatar_url: item.avatarUrl }
         return info
@@ -48,7 +45,7 @@ const App = () => {
         data={searchResult}
         renderItem={RenderItem}
         keyExtractor={useCallback((item) => item.id.toString(), [])}
-        onEndReachedThreshold={0.01}
+        onEndReachedThreshold={0.2}
         onEndReached={() => getMoreUsers().then((v) => setSearchResult([...searchResult, ...v]))}
         ListHeaderComponent={
           <SearchBar
@@ -64,4 +61,4 @@ const App = () => {
   )
 }
 
-export default App
+export default HomeScreen

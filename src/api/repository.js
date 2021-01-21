@@ -6,8 +6,8 @@ import request from './interceptors'
  * @param repoName the name of the repository to be searched
  * @returns ...
  */
-function call_repo(userName, repoName) {
+function getRepository(userName, repoName) {
   request.get('repos/' + `${userName}` + `${repoName}`).then((r) => r)
 }
 
-export default call_repo
+export default getRepository
