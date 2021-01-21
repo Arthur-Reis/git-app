@@ -1,10 +1,14 @@
 import { decamelizeKeys, camelizeKeys } from 'humps'
 import axios from 'axios'
-import { API_URL } from '@env'
+import { API_URL, TOKEN, USER } from '@env'
 
 function request() {
   const api_instance = axios.create({
-    baseURL: API_URL
+    baseURL: API_URL,
+    auth: {
+      username: USER,
+      password: TOKEN
+    }
   })
   //intercept requests before they are handled by (get)THEN or (try)CATCH --axios
   api_instance.interceptors.request.use(
