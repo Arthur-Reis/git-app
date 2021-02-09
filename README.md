@@ -4,7 +4,7 @@ Renomeie **.env.example** para **.env** e preencha as variáveis seguindo o exem
 TOKEN = github Token</p>
 USER = github Email</p>
 ```
-Para cadastrar seu token clique  [aqui](https://github.com/settings/tokens)
+Para cadastrar seu token clique  [aqui](https://github.com/settings/tokens)</p>
 Agora inicie o app com o gerenciador de pacotes [yarn](https://classic.yarnpkg.com/lang/en/)
 ```
 yarn
