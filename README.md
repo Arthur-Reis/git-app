@@ -1,5 +1,9 @@
 ## Setup
-Renomeie **.env.example** para **.env** e adicione seu [github TOKEN](https://github.com/settings/tokens) na variável ambiente TOKEN e seu github EMAIL na variável ambiente USER</p>  
+Renomeie **.env.example** para **.env** e adicione seu 
+```
+TOKEN = [github Token](https://github.com/settings/tokens)
+USER = github Email
+```
 
 Agora inicie o app com o gerenciador de pacotes [yarn](https://classic.yarnpkg.com/lang/en/)
 ```
