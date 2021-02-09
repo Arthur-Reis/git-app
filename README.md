@@ -3,6 +3,7 @@ Renomeie **.env.example** para **.env** e adicione seu [github TOKEN](https://gi
 
 Agora inicie o app com
 ```
+Yarn
 Yarn android
 Yarn start
 ```
